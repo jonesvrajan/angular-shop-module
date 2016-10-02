@@ -33,6 +33,9 @@
                         <li class="product-price">
                         Price:{{ product.p_originalprice * product.p_quantity | currency }}
                         </li>
+                        <li class="addto-cart">
+                          <button class="btn btn-primary" ng-click="productList.total(product)">Add to cart{{}}</button>
+                        </li>
                       </ul>
                     </li>
                   </ul>
