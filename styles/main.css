@@ -8776,7 +8776,7 @@ body {
 @media screen and (min-width: 768px) {
   /* line 72, ../../app/styles/main.scss */
   .container {
-    max-width: 730px;
+    max-width: 960px;
   }
 
   /* Remove the padding we set earlier */
@@ -8815,20 +8815,51 @@ body {
 /* line 104, ../../app/styles/main.scss */
 .product-list > li {
   margin-bottom: 25px;
+  text-align: center;
 }
-/* line 108, ../../app/styles/main.scss */
+@media screen and (min-width: 768px) {
+  /* line 104, ../../app/styles/main.scss */
+  .product-list > li {
+    text-align: left;
+  }
+}
+/* line 112, ../../app/styles/main.scss */
 .product-list .product-details {
   padding: 20px 0;
 }
-/* line 110, ../../app/styles/main.scss */
+/* line 114, ../../app/styles/main.scss */
 .product-list .product-details li {
   margin-bottom: 10px;
 }
-/* line 112, ../../app/styles/main.scss */
+/* line 116, ../../app/styles/main.scss */
 .product-list .product-details li.product-name {
   text-transform: uppercase;
 }
-/* line 115, ../../app/styles/main.scss */
+/* line 119, ../../app/styles/main.scss */
 .product-list .product-details li.product-variation {
   text-transform: capitalize;
 }
+
+/* line 126, ../../app/styles/main.scss */
+.search-form {
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 132, ../../app/styles/main.scss */
+  .navbar-collapse {
+    float: right;
+  }
+}
+/* line 138, ../../app/styles/main.scss */
+.header, .marketing, .footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 143, ../../app/styles/main.scss */
+.modal-content {
+  padding-top: 20px;
+}
+
+/*# sourceMappingURL=main.css.map */

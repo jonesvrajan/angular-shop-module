@@ -1,13 +1,41 @@
 <ul ng-controller="productListController as productList" class="product-list ul-reset">
-  <li ng-repeat="product in productList.productlist">
+  <li ng-repeat="product in productList.productlist | filter:searchProducts">
     <ul class="ul-reset clearfix">
-      <li class="col-md-4"><img ng-src="images/{{product.p_thumbnail}}.jpg"></li>
-      <li class="col-md-8">
+      <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
+      <li class="col-xs-12 col-sm-6 col-md-8">
         <ul class="product-details ul-reset">
-          <li class="product-name">{{product.p_name}}</li>
+          <li class="product-name"><a href data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()">{{product.p_name}}</a></li>
           <li class="product-variation">{{product.p_variation}}</li>
-          <li class="product-quantity"><input type="number" ng-model="productList.quantity" value="{{product.p_quantity}}"/></li>
-          <li class="product-price">Price: <span ng-bind="product.p_originalprice * productList.quantity  | currency "></span></li>
+          <li class="product-quantity">
+            <input type="number" ng-model="product.p_quantity" value="1"/>
+          </li>
+          <li class="product-price">
+            Price:{{ product.p_originalprice * product.p_quantity | currency }}
+          </li>
+          <li>
+            <div  class="modal fade" id="productDetails{{$index}}" tabindex="-1" role="dialog" aria-labelledby="executionOptionLabel"
+            aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <ul class="ul-reset clearfix">
+                    <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
+                    <li class="col-xs-12 col-sm-6 col-md-8">
+                      <ul class="product-details ul-reset">
+                        <li class="product-name">{{product.p_name}}</li>
+                        <li class="product-variation">{{product.p_variation}}</li>
+                        <li class="product-quantity">
+                        <input type="number" ng-model="product.p_quantity" value="1"/>
+                        </li>
+                        <li class="product-price">
+                        Price:{{ product.p_originalprice * product.p_quantity | currency }}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </li>
     </ul>
