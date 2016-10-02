@@ -1,16 +1,20 @@
 <ul ng-controller="productListController as productList" class="product-list ul-reset">
+  <h4 class="grand-total text-right"> Grand Total : {{productList.grandtotale() | currency}} </h4>
   <li ng-repeat="product in productList.productlist | filter:searchProducts">
     <ul class="ul-reset clearfix">
-      <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
+      <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
       <li class="col-xs-12 col-sm-6 col-md-8">
         <ul class="product-details ul-reset">
-          <li class="product-name"><a href data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()">{{product.p_name}}</a></li>
+          <li class="product-name"><a href data-toggle="modal" data-target="#productDetails{{$index}}">{{product.p_name}}</a></li>
           <li class="product-variation">{{product.p_variation}}</li>
           <li class="product-quantity">
-            <input type="number" ng-model="product.p_quantity" value="1"/>
+            <input type="number" ng-model="product.p_quantity" value="{{product.p_quantity}}"/>
           </li>
           <li class="product-price">
             Price:{{ product.p_originalprice * product.p_quantity | currency }}
+          </li>
+          <li class="addto-cart">
+            <button class="btn btn-primary" ng-click="productList.total(product)">Add to cart{{}}</button>
           </li>
           <li>
             <div  class="modal fade" id="productDetails{{$index}}" tabindex="-1" role="dialog" aria-labelledby="executionOptionLabel"
@@ -18,7 +22,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <ul class="ul-reset clearfix">
-                    <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-click="Clear()" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
+                    <li class="col-xs-12 col-sm-6 col-md-4"><img data-toggle="modal" data-target="#productDetails{{$index}}" ng-src="images/{{product.p_thumbnail}}.jpg"></li>
                     <li class="col-xs-12 col-sm-6 col-md-8">
                       <ul class="product-details ul-reset">
                         <li class="product-name">{{product.p_name}}</li>
@@ -40,4 +44,5 @@
       </li>
     </ul>
   </li>
+  <li><h4 class="grand-total text-right"> Grand Total : {{productList.grandtotale() | currency}} </h4></li>
 </ul>
